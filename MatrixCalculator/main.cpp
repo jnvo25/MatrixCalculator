@@ -7,9 +7,27 @@
 //
 
 #include <iostream>
+#include "Matrix.hpp"
 
 int main(int argc, const char * argv[]) {
     // insert code here...
-    std::cout << "Hello, World!\n";
+    std::cout << "Matrix Calculator";
+    
+    Matrix newMatrix{2,2};
+    
+    // Fill new matrix
+    for(int i=0; i<4; i++) {
+        newMatrix.add(rand() & 100, i);
+    }
+    
+    Matrix newerMatrix{newMatrix};
+    
+    std::cout << std::endl;
+    
+    newMatrix.print();
+    newerMatrix.print();
+    
+    std::cout << std::endl;
+    
     return 0;
 }

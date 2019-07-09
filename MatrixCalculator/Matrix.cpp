@@ -77,21 +77,27 @@ Matrix Matrix::operator+ (Matrix param) {
         }
         return temp;
     } else {
+        std::cout << "Matrixes incompatibile for addition." << std::endl;
         return Matrix(0,0);
     }
 }
 
 Matrix Matrix::operator* (Matrix param) {
-    Matrix temp = Matrix(rows, param.columns);
-    for(int rowInA=0; rowInA < rows; rowInA++ ) {
-        for(int colInB=0; colInB < param.columns; colInB++) {
-            int dotProduct = 0;
-            for(int i=0; i < columns; i++) {
-                dotProduct += getElement(rowInA, i) * param.getElement(i, colInB);
+    if(columns == param.rows) {
+        Matrix temp = Matrix(rows, param.columns);
+        for(int rowInA=0; rowInA < rows; rowInA++ ) {
+            for(int colInB=0; colInB < param.columns; colInB++) {
+                int dotProduct = 0;
+                for(int i=0; i < columns; i++) {
+                    dotProduct += getElement(rowInA, i) * param.getElement(i, colInB);
+                }
+                
+                temp.setElement(dotProduct, rowInA, colInB);
             }
-            
-            temp.setElement(dotProduct, rowInA, colInB);
         }
+        return temp;
+    } else {
+        std::cout << "Matrixes incompatibile for multiplication." << std::endl;
+        return Matrix(0,0);
     }
-    return temp;
 }

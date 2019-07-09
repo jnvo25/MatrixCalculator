@@ -44,9 +44,29 @@ int main(int argc, const char * argv[]) {
         }
     }
     
+    std::cout << "Matrix 1:" << std::endl;
     matrix1.print();
+    
+    std::cout << "Matrix 2:" << std::endl;
     matrix2.print();
-    (matrix1 * matrix2).print();
+    
+    char operation;
+    std::cout << "Do you want to add (+), subtract (-), or multiply (x)?" << std::endl;
+    std::cin >> operation;
+    switch(operation) {
+        case '+': (matrix1 * matrix2).print();
+            break;
+        case '-': (matrix1 * matrix2).print();
+            break;
+        case 'x': (matrix1 * matrix2).print();
+            break;
+        default:
+            std::cout << "Unable to recognize symbol" << std::endl;
+            
+    }
+    
+    
+    
     
     
     return 0;

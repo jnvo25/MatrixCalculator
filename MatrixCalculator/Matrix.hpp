@@ -22,11 +22,8 @@ public:
     // Destructor
     ~Matrix();
     
-    // Get Element from matrix (row, column)
-    int get(int, int);
-    
     // Add element to matrix
-    void add(int, int);
+    void setElement(int, int, int);
     
     void print();
     
@@ -36,7 +33,10 @@ private:
     int rows;
     int columns;
     int size;
-    int* elements;
+    int** pointerArray;
+    
+    // Get Element from matrix (row, column)
+    int getElement(int, int);
 };
 
 

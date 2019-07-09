@@ -87,8 +87,9 @@ Matrix Matrix::operator* (Matrix param) {
         for(int colInB=0; colInB < param.columns; colInB++) {
             int dotProduct = 0;
             for(int i=0; i < columns; i++) {
-                dotProduct += getElement(rowInA, i) * getElement(i, colInB);
+                dotProduct += getElement(rowInA, i) * param.getElement(i, colInB);
             }
+            
             temp.setElement(dotProduct, rowInA, colInB);
         }
     }

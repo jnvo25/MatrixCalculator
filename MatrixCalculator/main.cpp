@@ -13,31 +13,41 @@ int main(int argc, const char * argv[]) {
     srand(static_cast<unsigned int> (time(0)));
     std::cout << "Matrix Calculator" << std::endl;
     
-    Matrix matrix1{2,2};
-    Matrix matrix2{2,2};
     
-    // Fill new matrix
-    int a=1, b=1;
-    for(int i=0; i<2; i++) {
-        for(int j=0; j<2; j++) {
-            matrix1.setElement(a++, i, j);
-            matrix2.setElement(b++, i, j);
+    int rowSize1, colSize1;
+    std::cout << "Enter row size of first matrix" << std::endl;
+    std::cin >> rowSize1;
+    std::cout << "Enter column size of first matrix" << std::endl;
+    std::cin >> colSize1;
+    Matrix matrix1{rowSize1,colSize1};
+    for(int i=0; i < rowSize1; i++) {
+        for(int j=0; j < colSize1; j++) {
+            int value;
+            std::cout << "Enter element for row " << i << " col " << j << ":";
+            std::cin >> value;
+            matrix1.setElement(value, i, j);
         }
     }
-
-    std::cout << "Matrix 1" << std::endl;
-    matrix1.print();
-
-    std::cout << "Matrix 2" << std::endl;
-    matrix2.print();
-
-    std::cout << "Matrix1 + Matrix2" << std::endl;
-    Matrix matrix3 = matrix1 + matrix2;
-    matrix3.print();
     
-    std::cout << "Matrix1 * Matrix2" << std::endl;
-    Matrix matrix4 = matrix1 * matrix2;
-    matrix4.print();
+    int rowSize2, colSize2;
+    std::cout << "Enter row size of first matrix" << std::endl;
+    std::cin >> rowSize2;
+    std::cout << "Enter column size of first matrix" << std::endl;
+    std::cin >> colSize2;
+    Matrix matrix2{rowSize2,colSize2};
+    for(int i=0; i < rowSize2; i++) {
+        for(int j=0; j < colSize2; j++) {
+            int value;
+            std::cout << "Enter element for row " << i << " col " << j << ":";
+            std::cin >> value;
+            matrix2.setElement(value, i, j);
+        }
+    }
+    
+    matrix1.print();
+    matrix2.print();
+    (matrix1 * matrix2).print();
+    
     
     return 0;
 }

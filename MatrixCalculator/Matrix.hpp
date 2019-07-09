@@ -28,6 +28,7 @@ public:
     void print();
     
     Matrix operator+ (Matrix);
+    Matrix operator- (Matrix);
     Matrix operator* (Matrix);
     
 private:

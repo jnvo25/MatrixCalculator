@@ -82,6 +82,21 @@ Matrix Matrix::operator+ (Matrix param) {
     }
 }
 
+Matrix Matrix::operator- (Matrix param) {
+    if(rows == param.rows && columns == param.columns) {
+        Matrix temp = Matrix(rows, columns);
+        for(int i=0; i<rows; i++) {
+            for(int j=0; j<columns; j++) {
+                temp.setElement(getElement(i,j) - param.getElement(i,j), i, j);
+            }
+        }
+        return temp;
+    } else {
+        std::cout << "Matrixes incompatibile for subtraction." << std::endl;
+        return Matrix(0,0);
+    }
+}
+
 Matrix Matrix::operator* (Matrix param) {
     if(columns == param.rows) {
         Matrix temp = Matrix(rows, param.columns);

@@ -11,13 +11,13 @@
 
 int main(int argc, const char * argv[]) {
     srand(static_cast<unsigned int> (time(0)));
-    std::cout << "Matrix Calculator" << std::endl;
+    std::cout << "Matrix Calculator" << std::endl << std::endl;
     
     
     int rowSize1, colSize1;
-    std::cout << "Enter row size of first matrix" << std::endl;
+    std::cout << "Enter row size of first matrix: ";
     std::cin >> rowSize1;
-    std::cout << "Enter column size of first matrix" << std::endl;
+    std::cout << "Enter column size of first matrix: ";
     std::cin >> colSize1;
     Matrix matrix1{rowSize1,colSize1};
     for(int i=0; i < rowSize1; i++) {
@@ -30,9 +30,9 @@ int main(int argc, const char * argv[]) {
     }
     
     int rowSize2, colSize2;
-    std::cout << "Enter row size of first matrix" << std::endl;
+    std::cout << "Enter row size of first matrix: ";
     std::cin >> rowSize2;
-    std::cout << "Enter column size of first matrix" << std::endl;
+    std::cout << "Enter column size of first matrix: ";
     std::cin >> colSize2;
     Matrix matrix2{rowSize2,colSize2};
     for(int i=0; i < rowSize2; i++) {
@@ -43,7 +43,7 @@ int main(int argc, const char * argv[]) {
             matrix2.setElement(value, i, j);
         }
     }
-    
+    std::cout << std::endl << std::endl;
     std::cout << "Matrix 1:" << std::endl;
     matrix1.print();
     
@@ -51,12 +51,13 @@ int main(int argc, const char * argv[]) {
     matrix2.print();
     
     char operation;
+    std::cout << std::endl << std::endl;
     std::cout << "Do you want to add (+), subtract (-), or multiply (x)?" << std::endl;
     std::cin >> operation;
     switch(operation) {
-        case '+': (matrix1 * matrix2).print();
+        case '+': (matrix1 + matrix2).print();
             break;
-        case '-': (matrix1 * matrix2).print();
+        case '-': (matrix1 - matrix2).print();
             break;
         case 'x': (matrix1 * matrix2).print();
             break;

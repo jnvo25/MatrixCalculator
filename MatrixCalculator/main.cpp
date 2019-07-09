@@ -17,10 +17,11 @@ int main(int argc, const char * argv[]) {
     Matrix matrix2{2,2};
     
     // Fill new matrix
+    int a=1, b=1;
     for(int i=0; i<2; i++) {
         for(int j=0; j<2; j++) {
-            matrix1.setElement(rand() & 100, i, j);
-            matrix2.setElement(rand() & 100, i, j);
+            matrix1.setElement(a++, i, j);
+            matrix2.setElement(b++, i, j);
         }
     }
 
@@ -33,5 +34,10 @@ int main(int argc, const char * argv[]) {
     std::cout << "Matrix1 + Matrix2" << std::endl;
     Matrix matrix3 = matrix1 + matrix2;
     matrix3.print();
+    
+    std::cout << "Matrix1 * Matrix2" << std::endl;
+    Matrix matrix4 = matrix1 * matrix2;
+    matrix4.print();
+    
     return 0;
 }

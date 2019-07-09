@@ -80,3 +80,17 @@ Matrix Matrix::operator+ (Matrix param) {
         return Matrix(0,0);
     }
 }
+
+Matrix Matrix::operator* (Matrix param) {
+    Matrix temp = Matrix(rows, param.columns);
+    for(int rowInA=0; rowInA < rows; rowInA++ ) {
+        for(int colInB=0; colInB < param.columns; colInB++) {
+            int dotProduct = 0;
+            for(int i=0; i < columns; i++) {
+                dotProduct += getElement(rowInA, i) * getElement(i, colInB);
+            }
+            temp.setElement(dotProduct, rowInA, colInB);
+        }
+    }
+    return temp;
+}

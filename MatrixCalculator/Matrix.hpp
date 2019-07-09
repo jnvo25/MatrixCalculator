@@ -30,9 +30,12 @@ public:
     
     void print();
     
+    Matrix operator+ (Matrix);
+    
 private:
     int rows;
     int columns;
+    int size;
     int* elements;
 };
 

@@ -14,14 +14,16 @@
 Matrix::Matrix(int row, int col) {
     rows = row;
     columns = col;
-    elements = new int[rows*columns];
+    size = rows * columns;
+    elements = new int[size];
 }
 
 Matrix::Matrix(const Matrix& o) {
     rows = o.rows;
     columns = o.columns;
-    elements = new int[rows*columns];
-    memcpy(elements, o.elements, 4 * sizeof *o.elements);
+    size = o.size;
+    elements = new int[size];
+    memcpy(elements, o.elements, size * 4);
 }
 
 Matrix::~Matrix() {
@@ -37,11 +39,25 @@ void Matrix::add(int value, int index) {
 }
 
 void Matrix::print() {
-    for(int i = 0; i < rows*columns; i++) {
-        std::cout << elements[i] << " ";
-        if(i-1 % columns == 0) { std::cout << std::endl; }
+    if(size > 0) {
+        for(int i = 0; i < size; i++) {
+            std::cout << elements[i] << " ";
+            if(i-1 % columns == 0) { std::cout << std::endl; }
+        }
+    } else {
+        std::cout << "Matrix is empty" << std::endl;
     }
     std::cout << std::endl;
 }
 
-
+Matrix Matrix::operator+ (Matrix param) {
+    if(rows == param.rows && columns == param.columns) {
+        Matrix temp = Matrix(rows, columns);
+        for(int i=0; i<rows*columns; i++) {
+            temp.add(elements[i] + param.elements[i], i);
+        }
+        return temp;
+    } else {
+        return Matrix(0,0);
+    }
+}

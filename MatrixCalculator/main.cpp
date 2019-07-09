@@ -10,14 +10,16 @@
 #include "Matrix.hpp"
 
 int main(int argc, const char * argv[]) {
-    // insert code here...
+    srand(static_cast<unsigned int> (time(0)));
     std::cout << "Matrix Calculator";
     
     Matrix newMatrix{2,2};
+    Matrix aMatrix{2,2};
     
     // Fill new matrix
     for(int i=0; i<4; i++) {
         newMatrix.add(rand() & 100, i);
+        aMatrix.add(rand() & 100, i);
     }
     
     Matrix newerMatrix{newMatrix};
@@ -25,9 +27,11 @@ int main(int argc, const char * argv[]) {
     std::cout << std::endl;
     
     newMatrix.print();
-    newerMatrix.print();
+    aMatrix.print();
     
     std::cout << std::endl;
+    
+    (newMatrix + aMatrix).print();
     
     return 0;
 }
